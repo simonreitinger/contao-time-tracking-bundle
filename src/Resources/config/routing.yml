@@ -1,0 +1,63 @@
+time_tracking:
+    path: /contao/stopwatch
+    defaults:
+        _scope: backend
+        _controller: "SimonReitingerTimeTrackingBundle:Stopwatch:index"
+
+time_tracking_load:
+    path: /contao/stopwatch/load
+    defaults:
+        _scope: backend
+        _token_check: true
+        _controller: "SimonReitingerTimeTrackingBundle:Stopwatch:load"
+
+time_tracking_new:
+    path: /contao/stopwatch/new
+    defaults:
+        _scope: backend
+        _token_check: true
+        _controller: "SimonReitingerTimeTrackingBundle:Stopwatch:new"
+
+time_tracking_pause:
+    path: /contao/stopwatch/pause
+    defaults:
+        _scope: backend
+        _token_check: true
+        _controller: "SimonReitingerTimeTrackingBundle:Stopwatch:pause"
+
+time_tracking_continue:
+    path: /contao/stopwatch/continue
+    defaults:
+        _scope: backend
+        _token_check: true
+        _controller: "SimonReitingerTimeTrackingBundle:Stopwatch:continue"
+
+time_tracking_description:
+    path: /contao/stopwatch/update/description
+    defaults:
+        _scope: backend
+        _token_check: true
+        _controller: "SimonReitingerTimeTrackingBundle:Stopwatch:updateDescription"
+
+time_tracking_delete_time:
+  path: /contao/stopwatch/delete/time
+  defaults:
+      _scope: backend
+      _token_check: true
+      _controller: "SimonReitingerTimeTrackingBundle:Stopwatch:deleteTime"
+
+time_tracking_delete_tracking:
+    path: /contao/stopwatch/delete/tracking
+    defaults:
+        _scope: backend
+        _token_check: true
+        _controller: "SimonReitingerTimeTrackingBundle:Stopwatch:deleteTracking"
+
+time_tracking_submit:
+    path: /contao/stopwatch/submit/{trackingId}
+    requirements:
+        trackingId: \d+
+    defaults:
+        _scope: backend
+        _token_check: true
+        _controller: "SimonReitingerTimeTrackingBundle:Stopwatch:submit"

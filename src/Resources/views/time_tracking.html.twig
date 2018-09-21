@@ -1,0 +1,44 @@
+{% extends '@ContaoCore/Backend/be_page.html.twig' %}
+
+{% block headline %}
+Stopwatch
+{% endblock %}
+
+{% block main %}
+    <div class="vue">
+        {% for message in app.flashes('success') %}
+            <div class="tl_confirm">{{ message }}</div>
+        {% endfor %}
+        <div id="stopwatch"
+             data-load="{{ path('time_tracking_load') }}"
+             data-new="{{ path('time_tracking_new') }}"
+             data-pause="{{ path('time_tracking_pause') }}"
+             data-continue="{{ path('time_tracking_continue') }}"
+             data-description="{{ path('time_tracking_description') }}"
+             data-delete-time="{{ path('time_tracking_delete_time') }}"
+             data-delete-tracking="{{ path('time_tracking_delete_tracking') }}"
+        >
+            <div class="menu">
+                <button class="new" @click="newTracking()"><i class="material-icons">add</i></button>
+                <input class="stopwatch-input" type="text" name="descripition_new" v-model="description">
+            </div>
+            <div class="tracking-list" v-for="(timer, index) in trackingList">
+                <div class="timer-description">
+                    <input class="stopwatch-input description" type="text" name="description" @keyup="updateDescription(timer)" v-model="timer.description">
+                </div>
+                <div class="timer-list" v-for="(time, timeIndex) in timer.times">
+                    <p class="start time">Start: [[ time.start.toLocaleTimeString() ]]</p>
+                    <p class="end time" v-if="time.end">End: [[ time.end.toLocaleTimeString() ]]</p>
+                    <button @click="deleteTime(timer, index, timeIndex)"><i class="material-icons">delete</i></button>
+                </div>
+                <button class="pause" v-if="timer.running" @click="pauseTracking(timer)"><i class="material-icons">pause</i></button>
+                <button class="continue" v-if="!timer.running" @click="continueTracking(timer)"><i class="material-icons"><i class="material-icons">play_arrow</i></i></button>
+                <button class="delete" @click="deleteTracking(timer, index)"><i class="material-icons">delete_forever</i></button>
+                <button class="submit"><a :href="timer.submitRoute"><i class="material-icons">fast_forward</i></a></button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block error %}
+{% endblock %}

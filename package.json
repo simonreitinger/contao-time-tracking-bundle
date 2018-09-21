@@ -1,0 +1,42 @@
+{
+  "name": "contao-time-tracking-bundle",
+  "description": "Time tracking functionality for Contao backend users.",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src/Resources/public/ -d src/Resources/public/dist && uglifyjs src/Resources/public/dist/time-tracking.js --compress -o src/Resources/public/dist/time-tracking.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonreitinger/contao-time-tracking-bundle.git"
+  },
+  "keywords": [
+    "time",
+    "tracking",
+    "contao",
+    "vue"
+  ],
+  "author": "Simon Reitinger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simonreitinger/contao-time-tracking-bundle/issues"
+  },
+  "homepage": "https://github.com/simonreitinger/contao-time-tracking-bundle#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "node-sass": "^4.9.3",
+    "uglify-js": "^3.4.7",
+    "uglifycss": "0.0.29"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ],
+    "ignore": [
+      "src/Resources/public/dist/*.js"
+    ]
+  }
+}

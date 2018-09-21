@@ -1,0 +1,6 @@
+services:
+    time_tracking.listener.collection:
+        class: SimonReitinger\TimeTrackingBundle\EventListener\StopwatchListenerCollection
+        public: true
+        arguments:
+            - "@service_container"
